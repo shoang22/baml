@@ -39,65 +39,9 @@ def all_succeeded(checks: Dict[CheckName, Check]) -> bool:
 
 
 
-class Category(str, Enum):
-    
-    Refund = "Refund"
-    CancelOrder = "CancelOrder"
-    TechnicalSupport = "TechnicalSupport"
-    AccountIssue = "AccountIssue"
-    Question = "Question"
-
-class MyEnum(str, Enum):
-    
-    VALUE1 = "VALUE1"
-    VALUE2 = "VALUE2"
-    VALUE3 = "VALUE3"
-
-class Role(str, Enum):
-    
-    Customer = "Customer"
-    Assistant = "Assistant"
-
-class Answer(BaseModel):
-    answersInText: List["Citation"]
-    answer: str
-
 class BookAnalysis(BaseModel):
     bookNames: List[str]
     popularityOverTime: List["PopularityOverTime"]
-
-class CharacterDescription(BaseModel):
-    name: str
-    clothingItems: List[str]
-    hairColor: Optional[str] = None
-    smellDescription: str
-    spells: List["Spells"]
-
-class Citation(BaseModel):
-    documentTitle: str
-    sourceLink: str
-    relevantTextFromDocument: str
-    number: int
-
-class Context(BaseModel):
-    documents: List["Document"]
-
-class Document(BaseModel):
-    title: str
-    text: str
-    link: str
-
-class DynamicOutput(BaseModel):
-    model_config = ConfigDict(extra='allow')
-
-class Education(BaseModel):
-    school: str
-    degree: str
-    year: int
-
-class Message(BaseModel):
-    role: "Role"
-    content: str
 
 class PopularityOverTime(BaseModel):
     bookName: str
@@ -107,18 +51,9 @@ class Ranking(BaseModel):
     bookName: str
     score: int
 
-class Resume(BaseModel):
-    name: str
-    education: List["Education"]
-    skills: List[str]
-
 class Score(BaseModel):
     year: int
     score: int
-
-class Spells(BaseModel):
-    name: str
-    description: str
 
 class WordCount(BaseModel):
     bookName: str

@@ -27,7 +27,7 @@ template_string PrintMessage(msg: Message, prefix: string?) #"
 "# 
 
 function ClassifyMessage(convo: Message[]) -> Category[] {
-  client GPT4
+  client CustomCodeQwen1_5 
   prompt #"
     {# 
       Prompts are auto-dedented and trimmed.

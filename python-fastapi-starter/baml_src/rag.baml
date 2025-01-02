@@ -25,7 +25,7 @@ class Context {
 }
 
 function AnswerQuestion(question: string, context: Context) -> Answer {
-  client GPT4
+  client CustomCodeQwen1_5
   prompt #"
     Answer the following question using the given context below.
     CONTEXT:

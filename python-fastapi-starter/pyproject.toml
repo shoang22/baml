@@ -12,8 +12,13 @@ packages = [
 python = "^3.11"
 fastapi = "^0.115.0"
 uvicorn = {extras = ["standard"], version = "^0.31.0"}
-baml-py = "^0.59.0"
+baml-py = "^0.70.0"
 python-dotenv = "^1.0.1"
+pymupdf = "^1.25.1"
+python-multipart = "^0.0.20"
+pytest = "^8.3.4"
+httpx = "^0.28.1"
+pytest-asyncio = "^0.25.0"
 
 
 [build-system]
