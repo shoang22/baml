@@ -41,7 +41,7 @@ class BookAnalysis {
 }
 
 function AnalyzeBooks(input: string) -> BookAnalysis {
-  client CustomCodeQwen1_5
+  client GPT3 
   prompt #"
     Analyze the following book list and provide the information in the schema. If you don't know the exact answer, take a guess.
     BOOK_LIST:

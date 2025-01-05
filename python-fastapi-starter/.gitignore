@@ -1,1 +1,3 @@
 !baml_client
+.env
+temp/

@@ -38,3 +38,16 @@ client<llm> CustomCodeQwen1_5 {
     base_url "http://localhost:8080/v1"
   }
 }
+
+
+client<llm> AzureGPT4 {
+  provider azure-openai
+  options {
+    resource_name "my-resource-name"
+    deployment_id "my-deployment-id"
+    // Alternatively, you can use the base_url field
+    // base_url "https://my-resource-name.openai.azure.com/openai/deployments/my-deployment-id"
+    api_version "2024-02-01"
+    api_key env.AZURE_OPENAI_API_KEY
+  }
+}

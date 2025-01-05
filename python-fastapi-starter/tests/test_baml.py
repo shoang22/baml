@@ -8,19 +8,11 @@ import pytest_asyncio
 
 from fast_api_starter.app import app
 
-from temp.baml.litty.baml_client import b
-
 
 @pytest.fixture
 def client():
     with TestClient(app=app) as c:
         yield c
-
-
-@pytest.mark.asyncio
-async def test_baml_infer():
-    out = await b.AnalyzeBooks("the cat in the hat")
-    print(out)
 
 
 def test_upload_baml(client: TestClient):

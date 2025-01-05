@@ -1,21 +1,15 @@
-from contextlib import asynccontextmanager, contextmanager
+from contextlib import asynccontextmanager
 import tempfile
 import inspect
-import pdb
 import shutil
 import subprocess
 import importlib
 from typing import AsyncContextManager
-import uuid
 from fastapi import FastAPI, HTTPException, UploadFile
 import os
 
 import pymupdf
-from fastapi.responses import StreamingResponse
-import asyncio
 
-from pytest_asyncio.plugin import AsyncGenerator
-from baml_client import b
 
 from dotenv import load_dotenv
 
@@ -29,7 +23,11 @@ async def setup_baml(file: UploadFile) -> AsyncContextManager[str]:
     if not file.filename.endswith(".baml"):
         raise HTTPException(status_code=422, detail="Upload must have .baml extension")
 
-    with tempfile.TemporaryDirectory(dir=os.path.join("temp", "baml")) as tmpdir:
+    bamldir = os.path.join("temp", "baml")
+    if not os.path.isdir(bamldir):
+        os.makedirs(bamldir)
+
+    with tempfile.TemporaryDirectory(dir=bamldir) as tmpdir:
         outdir = os.path.join(tmpdir, "baml_src")
         os.makedirs(outdir, exist_ok=True)
 
@@ -40,14 +38,6 @@ async def setup_baml(file: UploadFile) -> AsyncContextManager[str]:
 
         subprocess.run(f"poetry run baml-cli generate --from {outdir}", shell=True)
         yield os.path.dirname(outdir)
-
-
-def read_pdf(file: bytes) -> str:
-    doc = pymupdf.open(stream=file)
-    text = ""
-    for page in doc:
-        text += page.get_text()
-    return text
 
 
 @app.post("/baml")

@@ -399,6 +399,26 @@ files = [
 typing-extensions = ">=4.6.0,<4.7.0 || >4.7.0"
 
 [[package]]
+name = "pydantic-settings"
+version = "2.7.1"
+description = "Settings management using Pydantic"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "pydantic_settings-2.7.1-py3-none-any.whl", hash = "sha256:590be9e6e24d06db33a4262829edef682500ef008565a969c73d39d5f8bfb3fd"},
+    {file = "pydantic_settings-2.7.1.tar.gz", hash = "sha256:10c9caad35e64bfb3c2fbf70a078c0e25cc92499782e5200747f942a065dec93"},
+]
+
+[package.dependencies]
+pydantic = ">=2.7.0"
+python-dotenv = ">=0.21.0"
+
+[package.extras]
+azure-key-vault = ["azure-identity (>=1.16.0)", "azure-keyvault-secrets (>=4.8.0)"]
+toml = ["tomli (>=2.0.1)"]
+yaml = ["pyyaml (>=6.0.1)"]
+
+[[package]]
 name = "pymupdf"
 version = "1.25.1"
 description = "A high performance Python library for data extraction, analysis, conversion & manipulation of PDF (and other) documents."
@@ -819,4 +839,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "d50a7e55557856bc50edf8fc170f48a6910153148cb1bdbd6969770ea6898dc8"
+content-hash = "69842614e6ae901f0afd20041c14b9d948bbb1527b475dd185f753e3bb78aba9"
