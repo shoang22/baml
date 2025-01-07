@@ -18,7 +18,7 @@ def client():
 def test_upload_baml(client: TestClient):
     resp = client.post(
         "/baml",
-        files={"file": open("baml_src/analyze_books.baml", "rb")},
+        files={"file": open("baml_src/sim_fight.baml", "rb")},
         params={"prompt": "the cat in the hat"},
     )
     assert resp.status_code == 200

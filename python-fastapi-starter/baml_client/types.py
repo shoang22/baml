@@ -82,6 +82,9 @@ class Citation(BaseModel):
 class Context(BaseModel):
     documents: List["Document"]
 
+class Defend(BaseModel):
+    side: int
+
 class Document(BaseModel):
     title: str
     text: str
@@ -95,6 +98,10 @@ class Education(BaseModel):
     degree: str
     year: int
 
+class Kick(BaseModel):
+    side: int
+    power: float
+
 class Message(BaseModel):
     role: "Role"
     content: str
@@ -102,6 +109,10 @@ class Message(BaseModel):
 class PopularityOverTime(BaseModel):
     bookName: str
     scores: List["Score"]
+
+class Punch(BaseModel):
+    side: int
+    power: float
 
 class Ranking(BaseModel):
     bookName: str

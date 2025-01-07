@@ -53,6 +53,9 @@ class Citation(BaseModel):
 class Context(BaseModel):
     documents: List["Document"]
 
+class Defend(BaseModel):
+    side: Optional[int] = None
+
 class Document(BaseModel):
     title: Optional[str] = None
     text: Optional[str] = None
@@ -66,6 +69,10 @@ class Education(BaseModel):
     degree: Optional[str] = None
     year: Optional[int] = None
 
+class Kick(BaseModel):
+    side: Optional[int] = None
+    power: Optional[float] = None
+
 class Message(BaseModel):
     role: Optional[types.Role] = None
     content: Optional[str] = None
@@ -73,6 +80,10 @@ class Message(BaseModel):
 class PopularityOverTime(BaseModel):
     bookName: Optional[str] = None
     scores: List["Score"]
+
+class Punch(BaseModel):
+    side: Optional[int] = None
+    power: Optional[float] = None
 
 class Ranking(BaseModel):
     bookName: Optional[str] = None

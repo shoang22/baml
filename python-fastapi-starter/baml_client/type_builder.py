@@ -20,7 +20,7 @@ from baml_py.type_builder import TypeBuilder as _TypeBuilder, ClassPropertyBuild
 class TypeBuilder(_TypeBuilder):
     def __init__(self):
         super().__init__(classes=set(
-          ["Answer","BookAnalysis","CharacterDescription","Citation","Context","Document","DynamicOutput","Education","Message","PopularityOverTime","Ranking","Resume","Score","Spells","WordCount",]
+          ["Answer","BookAnalysis","CharacterDescription","Citation","Context","Defend","Document","DynamicOutput","Education","Kick","Message","PopularityOverTime","Punch","Ranking","Resume","Score","Spells","WordCount",]
         ), enums=set(
           ["Category","MyEnum","Role",]
         ))

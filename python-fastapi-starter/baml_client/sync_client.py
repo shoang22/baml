@@ -162,6 +162,29 @@ class BamlSyncClient:
       )
       return cast(types.Resume, raw.cast_to(types, types))
     
+    def SimulateFight(
+        self,
+        input: str,
+        baml_options: BamlCallOptions = {},
+    ) -> List[Union[types.Punch, types.Kick, types.Defend]]:
+      __tb__ = baml_options.get("tb", None)
+      if __tb__ is not None:
+        tb = __tb__._tb # type: ignore (we know how to use this private attribute)
+      else:
+        tb = None
+      __cr__ = baml_options.get("client_registry", None)
+
+      raw = self.__runtime.call_function_sync(
+        "SimulateFight",
+        {
+          "input": input,
+        },
+        self.__ctx_manager.get(),
+        tb,
+        __cr__,
+      )
+      return cast(List[Union[types.Punch, types.Kick, types.Defend]], raw.cast_to(types, types))
+    
 
 
 
@@ -322,6 +345,36 @@ class BamlStreamClient:
         raw,
         lambda x: cast(partial_types.Resume, x.cast_to(types, partial_types)),
         lambda x: cast(types.Resume, x.cast_to(types, types)),
+        self.__ctx_manager.get(),
+      )
+    
+    def SimulateFight(
+        self,
+        input: str,
+        baml_options: BamlCallOptions = {},
+    ) -> baml_py.BamlSyncStream[List[Optional[Union[partial_types.Punch, partial_types.Kick, partial_types.Defend]]], List[Union[types.Punch, types.Kick, types.Defend]]]:
+      __tb__ = baml_options.get("tb", None)
+      if __tb__ is not None:
+        tb = __tb__._tb # type: ignore (we know how to use this private attribute)
+      else:
+        tb = None
+      __cr__ = baml_options.get("client_registry", None)
+
+      raw = self.__runtime.stream_function_sync(
+        "SimulateFight",
+        {
+          "input": input,
+        },
+        None,
+        self.__ctx_manager.get(),
+        tb,
+        __cr__,
+      )
+
+      return baml_py.BamlSyncStream[List[Optional[Union[partial_types.Punch, partial_types.Kick, partial_types.Defend]]], List[Union[types.Punch, types.Kick, types.Defend]]](
+        raw,
+        lambda x: cast(List[Optional[Union[partial_types.Punch, partial_types.Kick, partial_types.Defend]]], x.cast_to(types, partial_types)),
+        lambda x: cast(List[Union[types.Punch, types.Kick, types.Defend]], x.cast_to(types, types)),
         self.__ctx_manager.get(),
       )
     
